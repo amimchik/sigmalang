@@ -1,3 +1,4 @@
 #!/usr/bin/sh
+set -e
 export CC=clang
 export CXX=clang++

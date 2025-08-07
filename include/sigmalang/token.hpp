@@ -24,8 +24,10 @@ struct Plus {};
 struct Minus {};
 struct Star {};
 struct Slash {};
-using Any = std ::variant<Keyword, Identifier, LPar, RPar, LBrace, RBrace,
-                          Semicolon, Number, Plus, Minus, Star, Slash>;
+struct EndOfFile {};
+using Any =
+    std ::variant<Keyword, Identifier, LPar, RPar, LBrace, RBrace, Semicolon,
+                  Number, Plus, Minus, Star, Slash, EndOfFile>;
 }  // namespace org::amimchik::sigmalang::lexer::token
 
 namespace token = org::amimchik::sigmalang::lexer::token;
@@ -65,6 +67,7 @@ struct formatter<token::Any> {
 		        [](const Minus&) { return std::string("minus"); },
 		        [](const Star&) { return std::string("star"); },
 		        [](const Slash&) { return std::string("slash"); },
+		        [](const EndOfFile&) { return std::string("EOF"); },
 		    },
 		    tok);
 

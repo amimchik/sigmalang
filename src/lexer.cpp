@@ -44,7 +44,7 @@ std::vector<token::Any> Lexer::tokenize() {
 			result.push_back(token::Semicolon());
 			break;
 		case '(':
-			result.push_back(token::RPar());
+			result.push_back(token::LPar());
 			break;
 		case ')':
 			result.push_back(token::RPar());
@@ -69,5 +69,6 @@ std::vector<token::Any> Lexer::tokenize() {
 			break;
 		}
 	}
+	result.push_back(token::EndOfFile());
 	return result;
 }
